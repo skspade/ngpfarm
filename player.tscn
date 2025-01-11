@@ -12,5 +12,5 @@ script = ExtResource("1_uf5n6")
 shape = SubResource("CapsuleShape2D_7bpfe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)  # Scale down the sprite to a reasonable size
-texture = ExtResource("2_8k4ul")  # Use Godot's icon as placeholder
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_8k4ul")
