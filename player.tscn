@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqitdao4h2kvv"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_uf5n6"]
+[ext_resource type="Texture2D" uid="uid://bgtqrpv2tw8gn" path="res://icon.svg" id="2_8k4ul"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7bpfe"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_uf5n6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7bpfe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)  # Scale down the sprite to a reasonable size
+texture = ExtResource("2_8k4ul")  # Use Godot's icon as placeholder
