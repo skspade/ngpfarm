@@ -1,11 +1,17 @@
 # Player script that handles basic character movement
 extends CharacterBody2D
 
+@onready var sprite = $AnimatedSprite2D
 # Movement speed in pixels per second
 var speed = 100
 
 # Track last direction for idle animation
 var last_direction = Vector2.DOWN
+
+
+func _ready():
+	# Set the player's initial animation
+	$AnimatedSprite2D.play("idle_down")
 
 # Called every physics frame to handle movement
 func _physics_process(_delta):
@@ -18,6 +24,7 @@ func _physics_process(_delta):
 	if input_vector != Vector2.ZERO:
 		input_vector = input_vector.normalized()
 		velocity = input_vector * speed
+		last_direction = input_vector
 	else:
 		# If no input, stop the character
 		velocity = Vector2.ZERO
@@ -27,29 +34,15 @@ func _physics_process(_delta):
 	update_animation(input_vector)
 
 func update_animation(input_vector):
-	# If there's no input, set the animation to idle
-	if input_vector == Vector2.ZERO:
-		$AnimatedSprite.play("idle_" + getInputVectorName(last_direction))
-	else:
-		# If there's input, set the animation to walk
-		$AnimatedSprite.play("walk_" + getInputVectorName(input_vector))
-
-	# Update the last direction for idle animation
-	if input_vector != Vector2.ZERO:
-		last_direction = input_vector
-
-	# Set the animation direction based on the last direction
-	$AnimatedSprite.animation = "walk_" + getInputVectorName(last_direction)
-
+	var animation_prefix = "idle_" if input_vector == Vector2.ZERO else "walk_"
+	var direction = getInputVectorName(last_direction)
+	if direction != "":
+		sprite.play(animation_prefix + direction)
 
 func getInputVectorName(input_vector):
-	if input_vector == Vector2.UP:
-		return "up"
-	elif input_vector == Vector2.DOWN:
-		return "down"
-	elif input_vector == Vector2.LEFT:
-		return "left"
-	elif input_vector == Vector2.RIGHT:
-		return "right"
-	else:
-		return ""
+	# Handle diagonal movement by using the stronger axis
+	if abs(input_vector.x) > abs(input_vector.y):
+		return "right" if input_vector.x > 0 else "left"
+	elif abs(input_vector.y) > 0:
+		return "down" if input_vector.y > 0 else "up"
+	return "down"  # Default direction
