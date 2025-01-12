@@ -17,4 +17,4 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-LayerOrder="*res://scripts/systems/layer_order.gd"
+GameLayer="*res://scripts/systems/layer_order.gd"
