@@ -14,3 +14,6 @@ config/name="NGPFarm"
 run/main_scene="res://node_2d.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+LayerOrder="*res://scripts/systems/layer_order.gd"

@@ -1,17 +1,17 @@
-# Player script that handles basic character movement
 extends CharacterBody2D
 
 @onready var sprite = $AnimatedSprite2D
-# Movement speed in pixels per second
 @export var speed = 100
 
-# Track last direction for idle animation
 var last_direction = Vector2.DOWN
 
-
 func _ready():
-	# Set the player's initial animation
+	# Set the player's initial animation and Z-index
 	$AnimatedSprite2D.play("idle_down")
+	z_index = LayerOrder.ZIndex.CHARACTERS
+	
+	# Sort sprites relative to their Y position
+	y_sort_enabled = true
 
 # Called every physics frame to handle movement
 func _physics_process(_delta):
