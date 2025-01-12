@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var sprite = $AnimatedSprite2D
 # Movement speed in pixels per second
-var speed = 100
+@export var speed = 100
 
 # Track last direction for idle animation
 var last_direction = Vector2.DOWN
