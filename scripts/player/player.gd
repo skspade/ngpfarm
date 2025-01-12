@@ -8,7 +8,7 @@ var last_direction = Vector2.DOWN
 func _ready():
 	# Set the player's initial animation and Z-index
 	$AnimatedSprite2D.play("idle_down")
-	z_index = GameLayer.ZIndex.CHARACTERS
+	z_index = LayerOrder.ZIndex.CHARACTERS
 	
 	# Sort sprites relative to their Y position
 	y_sort_enabled = true
