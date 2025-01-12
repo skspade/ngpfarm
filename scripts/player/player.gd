@@ -34,10 +34,14 @@ func _physics_process(_delta):
 	update_animation(input_vector)
 
 func update_animation(input_vector):
-	var animation_prefix = "idle_" if input_vector == Vector2.ZERO else "walk_"
-	var direction = getInputVectorName(last_direction)
-	if direction != "":
-		sprite.play(animation_prefix + direction)
+	if input_vector == Vector2.ZERO:
+		# Use last_direction for idle animation
+		var direction = getInputVectorName(last_direction)
+		sprite.play("idle_" + direction)
+	else:
+		# Use current input_vector for walk animation
+		var direction = getInputVectorName(input_vector)
+		sprite.play("walk_" + direction)
 
 func getInputVectorName(input_vector):
 	# Handle diagonal movement by using the stronger axis
