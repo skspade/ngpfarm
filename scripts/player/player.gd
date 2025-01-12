@@ -44,9 +44,16 @@ func update_animation(input_vector):
 		sprite.play("walk_" + direction)
 
 func getInputVectorName(input_vector):
-	# Handle diagonal movement by using the stronger axis
-	if abs(input_vector.x) > abs(input_vector.y):
+	# Handle diagonal animations
+	if input_vector.x != 0 && input_vector.y != 0:
+		var x_dir = "right" if input_vector.x > 0 else "left"
+		var y_dir = "down" if input_vector.y > 0 else "up"
+		return y_dir + "_" + x_dir
+	
+	# Handle cardinal directions
+	elif abs(input_vector.x) > 0:
 		return "right" if input_vector.x > 0 else "left"
 	elif abs(input_vector.y) > 0:
 		return "down" if input_vector.y > 0 else "up"
+	
 	return "down"  # Default direction
