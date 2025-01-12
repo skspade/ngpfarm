@@ -91,8 +91,11 @@ sources/3 = SubResource("TileSetAtlasSource_r57xt")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="YSortNode" type="Node2D" parent="."]
+
+[node name="Player" parent="YSortNode" instance=ExtResource("1_0fgvy")]
+z_index = 1
+
+[node name="BaseTileMap" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAEAAMAAQABAAEAAAAAAAAAAQABAAEAAAAAAAEAAQABAAEAAAABAAEAAQABAAEAAAABAAIAAQABAAEAAAABAP3/AQABAAEAAAABAP7/AQABAAEAAAAAAP7/AQABAAEAAAAAAP//AQABAAEAAAD//wAAAQABAAEAAAD//wEAAQABAAEAAAD+/wEAAQABAAEAAAD+/wIAAQABAAEAAAD9/wIAAQABAAEAAAD9/wEAAQABAAEAAAD9/wAAAQABAAEAAAD+////AQABAAEAAAD+//7/AQABAAEAAAD///7/AQABAAEAAAD///3/AQABAAEAAAAAAP3/AQABAAEAAAAAAPz/AQABAAEAAAABAPz/AQABAAEAAAACAPz/AQABAAEAAAD+/wAAAQABAAEAAAD/////AQABAAEAAAA=")
 tile_set = SubResource("TileSet_n16p0")
-
-[node name="Player" parent="." instance=ExtResource("1_0fgvy")]
